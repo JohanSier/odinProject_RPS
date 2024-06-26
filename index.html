@@ -6,7 +6,41 @@
     <title>Play Rock, Paper, Scissors</title>
 </head>
 <body>
+    <main class="game">
+        <h1>Rock, Paper, Scissors</h1>
+        <p>Play the classic game of Rock, Paper, Scissors against the computer! Test your strategy and luck in this fun and interactive game. Choose your weapon wisely and see if you can outsmart the Computer.</p>
+        <h2>Choose Rock, Paper or Scissors</h2>
+        
+        <!-- This div only will display when double clicking one among the three options -->
+        <div class="scores">
+            <p class="user-score">Your Score: 0</p>
+            <p class="computer-score">Computer Score: 0</p>
+        </div>
 
+        <section class="options">
+            
+            <div class="rock-section">
+                <button class="rock">
+                    <img src="./assets/rock.png" alt="Rock">
+                </button>
+                <h3>Rock</h3>
+            </div>
+
+            <div class="paper-section">
+                <button class="paper">
+                    <img src="./assets/paper.png" alt="Paper">
+                </button>
+                <h3>Paper</h3>
+            </div>
+
+            <div class="scissors-section">
+                <button class="scissors">
+                    <img src="./assets/scissors.png" alt="Scissors">
+                </button>
+                <h3>Scissors</h3>
+            </div>
+        </section>
+    </main>
 <script src="./app.js"></script>
 </body>
 </html>
