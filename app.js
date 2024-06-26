@@ -78,3 +78,13 @@ function playRound(humanChoice, computerChoice) {
       console.log(`Current Score: \n Computer: ${computerScore} \n ${userName.toUpperCase()}: ${humanScore}`)
   }
 }
+
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        playRound(humanSelection, computerSelection);
+        humanSelection = getHumanChoice();
+        computerSelection = getComputerChoice();
+    }
+}
+
+playGame();
