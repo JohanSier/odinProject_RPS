@@ -1,0 +1,60 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: "Plus Jakarta Sans", sans-serif;;
+    text-align: center;
+}
+
+main{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* MAIN HEADINGS AND PARAGRAPH STYLING */
+
+.headings-and-paragraph{
+    display: flex;
+    margin-top: 7rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 250px;
+    gap: 14px;
+}
+
+.headings-and-paragraph h1{
+    font-size: 2.2rem;
+}
+
+
+.headings-and-paragraph p{
+    font-size: 1rem;
+}
+
+.headings-and-paragraph h2{
+    margin-top: 24px;
+    font-size: 1.4rem;
+}
+
+/* SCORES SECTION STLYING */
+
+.scores{
+    display: none;
+    margin-top: 18px;
+}
+
+/* OPTIONS SECTION STLYING */
+.options-container{
+    border: 1px solid black;
+    margin: 12px auto;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+}

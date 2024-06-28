@@ -4,20 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Play Rock, Paper, Scissors</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <main class="game">
-        <h1>Rock, Paper, Scissors</h1>
-        <p>Play the classic game of Rock, Paper, Scissors against the computer! Test your strategy and luck in this fun and interactive game. Choose your weapon wisely and see if you can outsmart the Computer.</p>
-        <h2>Choose Rock, Paper or Scissors</h2>
+    <main>
+        <div class="headings-and-paragraph">
+            <h1>Rock, Paper, Scissors</h1>
+            <p>Play the classic game of Rock, Paper, Scissors against the computer! Test your strategy and luck in this fun and interactive game. Choose your weapon wisely and see if you can outsmart the Computer.</p>
+            <h2>Choose Rock, Paper or Scissors</h2>
+        </div>
         
-        <!-- This div only will display when double clicking one among the three options -->
+        <!-- This div only will display when double clicking one of the three options -->
         <div class="scores">
             <p class="user-score">Your Score: 0</p>
             <p class="computer-score">Computer Score: 0</p>
         </div>
 
-        <section class="options">
+        <section class="options-container">
             
             <div class="rock-section">
                 <button class="rock">
