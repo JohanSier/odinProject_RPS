@@ -52,6 +52,9 @@ main{
 /* THIS CODE WILL DISPLAY WHEN THE USER CLICKS ON START GAME BUTTON */
 .scores{
     display: none; /* when visible change it to flex */
+    transform: translateY(-100px);
+    opacity: 0;
+    transition: opacity 1s ease-in, transform 1s ease;
     margin: auto;
     width: fit-content;
     align-items: center;
@@ -61,6 +64,13 @@ main{
     padding: 12px 24px;
     border: 2px solid #1e1e1e;
     border-radius: 20px;
+}
+
+.visibleScore{
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+    transition: opacity .3s ease-in, transform .3s ease;
 }
 
 .scores p{

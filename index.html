@@ -19,11 +19,6 @@
         </div>
         
         <!-- This div only will display when double clicking one of the three options -->
-        <div class="scores">
-            <p id="user-score">0</p>
-            <p id="computer-score">0</p>
-        </div>
-
         <section class="options-container">
             <div class="rock-section">
                 <button class="rock">
@@ -51,9 +46,15 @@
                 <button>
                     <img class="computer-selection-image" src="./Images/paper.svg" alt="Unknown">
                 </button>
-                <h3>Unknown</h3>
+                <h3 class="computer-selection-text">Unknown</h3>
             </div>
         </section>
+
+        <div class="scores">
+            <p id="user-score">0</p>
+            <p id="computer-score">0</p>
+        </div>
+        
         <button class="start-game-btn">Play!</button>
     </main>
 <script src="./app.js"></script>
