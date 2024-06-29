@@ -8,6 +8,9 @@ const rockContainer = document.querySelector(".rock-section");
 const paperContainer = document.querySelector(".paper-section");
 const scissorsContainer = document.querySelector(".scissors-section");
 
+const restartFlexContainer = document.querySelector(".flex-container");
+const restartContainer = document.querySelector(".restart-container");
+
 // DELAY VARIABLE
 const timeOut = 3500;
 
@@ -20,6 +23,7 @@ const $userScore = document.querySelector("#user-score");
 const $computerScore = document.querySelector("#computer-score");
 
 const startBtn = document.querySelector(".start-game-btn");
+const restartBtn = document.querySelector(".restart-btn");
 
 let humanScore = 0;
 let computerScore = 0;
@@ -50,12 +54,27 @@ function playRound(humanChoice, computerChoice) {
 
 function handleChoice(choice) {
     userChoice = choice;
-    showStartBtn();
+    if (!restartBtn.classList.contains("visible")){
+        showStartBtn();
+    }
 }
 
 function updateScore(){
     $userScore.textContent = humanScore;
     $computerScore.textContent = computerScore;
+}
+
+function showRestartBtn(){
+    setTimeout(() => {
+        restartBtn.classList.add("visible");
+        restartFlexContainer.style.display = "flex";
+        restartContainer.style.display = "inline-block";
+    }, timeOut)
+}
+
+function restartGame() {
+    resetGame();
+    hideRestartBtn();
 }
 
 function showStartBtn() {
@@ -64,6 +83,12 @@ function showStartBtn() {
 
 function hideStartBtn() {
     startBtn.classList.remove("visible");
+}
+
+function hideRestartBtn() {
+    restartBtn.classList.remove("visible");
+    restartFlexContainer.style.display = "none";
+    restartContainer.style.display = "none";
 }
 
 function showScores(){
@@ -104,10 +129,19 @@ function resetGame() {
     paperContainer.style.display = "block";
     scissorsContainer.style.display = "block";
     computerDiv.style.display = "none";
-    userChoice = "";
+    scores.classList.remove("visibleScore");
+    restartBtn.classList.remove("visible");
+    restartFlexContainer.style.display = "none";
+    restartContainer.style.display = "none";
+    updateScore();
 }
 
 function startGame() {
+    if (!userChoice) {
+        alert("Please select Rock, Paper, or Scissors first!");
+        return;
+    }
+
     computerChoice = getComputerChoice();
     playRound(userChoice, computerChoice);
     hideStartBtn();
@@ -115,31 +149,21 @@ function startGame() {
     removeUnselectedOptions();
     showComputerOption();
     updateScore();
+    showRestartBtn();
 }
-// function updateScore() {
-//     scores.innerHTML = `
-//         <p id="user-score">${humanScore}</p>
-//         <p id="computer-score">${computerScore}</p>
-//     `;
-// }
-
 
 // User choices event listeners
 rockBtn.addEventListener("click", () => handleChoice("Rock"));
 paperBtn.addEventListener("click", () => handleChoice("Paper"));
 scissorsBtn.addEventListener("click", () => handleChoice("Scissors"));
 
-//Show Scores
-// startBtn.addEventListener("click", showScores);
 
-//Remove Unselected Options
-// startBtn.addEventListener("click", removeUnselectedOptions);
-
-//Show Computer Option
-// startBtn.addEventListener("click", showComputerOption);
 
 // START GAME
 startBtn.addEventListener("click", startGame);
+
+//RESTART GAME
+restartBtn.addEventListener("click", restartGame);
 
 // HIDE startBtn when the user clicks outside one of the three buttons
 document.body.addEventListener("click", (event) => {
