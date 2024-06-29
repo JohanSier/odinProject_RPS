@@ -50,9 +50,8 @@ main{
 
 /* SCORES SECTION STYLING */
 /* THIS CODE WILL DISPLAY WHEN THE USER CLICKS ON START GAME BUTTON */
-.scores{
+.scores {
     display: none; /* when visible change it to flex */
-    transform: translateY(-100px);
     opacity: 0;
     transition: opacity 1s ease-in, transform 1s ease;
     margin: auto;
@@ -60,15 +59,13 @@ main{
     align-items: center;
     justify-content: center;
     gap: 12px;
-    margin-top: 24px;
     padding: 12px 24px;
     border: 2px solid #1e1e1e;
     border-radius: 20px;
 }
 
 .visibleScore{
-    display: flex;
-    transform: translateY(0);
+    display: inline-flex;
     opacity: 1;
     transition: opacity .3s ease-in, transform .3s ease;
 }
@@ -167,6 +164,35 @@ main{
     background-color: transparent;
 }
 
+/* FLEX CONTAINER STYLING CONTAINING SCORES AND RESTART BUTTON */
+.flex-container{
+    display: none; /* when visible change it to flex */
+    margin: auto;
+    width: fit-content; 
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+/* RESTART GAME STYLING */
+.restart-container{
+    display: none;
+}
+
+.restart-btn{
+    visibility: hidden;
+    width: 45px;
+    height: auto;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.restart-btn img{
+    width: 45px;
+}
+
 /* START GAME STYLING */
 
 /* THIS CODE WILL DISPLAY WHEN THE USER CLICKS ON ONE OF THE THREE OPTIONS*/
@@ -176,7 +202,7 @@ main{
     font-weight: 600;
     width: 150px;
     padding: 12px;
-    margin-top: 8px;
+    margin-top: 2px;
     border-radius: 20px;
     border: none;
     background-color: #1e1e1e;
