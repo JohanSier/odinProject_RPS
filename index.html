@@ -20,12 +20,11 @@
         
         <!-- This div only will display when double clicking one of the three options -->
         <div class="scores">
-            <p class="user-score">Your Score: 0</p>
-            <p class="computer-score">Computer Score: 0</p>
+            <p id="user-score">0</p>
+            <p id="computer-score">0</p>
         </div>
 
         <section class="options-container">
-            
             <div class="rock-section">
                 <button class="rock">
                     <img src="./Images/rock.svg" alt="Rock">
@@ -46,7 +45,16 @@
                 </button>
                 <h3>Scissors</h3>
             </div>
+
+            <!-- COMPUTER OPTION THAT AT FIRST IS NOT VISIBLE -->
+            <div class="computer-option-section">
+                <button>
+                    <img class="computer-selection-image" src="./Images/paper.svg" alt="Unknown">
+                </button>
+                <h3>Unknown</h3>
+            </div>
         </section>
+        <button id="start-game-btn">Play!</button>
     </main>
 <script src="./app.js"></script>
 </body>

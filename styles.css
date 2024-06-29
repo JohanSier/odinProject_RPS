@@ -19,7 +19,7 @@ main{
 
 .headings-and-paragraph{
     display: flex;
-    margin-top: 7rem;
+    margin-top: 4.5rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -34,6 +34,7 @@ main{
 
 .headings-and-paragraph p{
     font-size: 1rem;
+    text-align: center;
 }
 
 .headings-and-paragraph h2{
@@ -41,20 +42,125 @@ main{
     font-size: 1.4rem;
 }
 
-/* SCORES SECTION STLYING */
-
+/* SCORES SECTION STYLING */
+/* THIS CODE WILL DISPLAY WHEN THE USER CLICKS ON START GAME BUTTON */
 .scores{
-    display: none;
-    margin-top: 18px;
+    display: none; /* when visible change it to flex */
+    margin: auto;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+    padding: 12px 24px;
+    border: 2px solid #1e1e1e;
+    border-radius: 20px;
+}
+
+.scores p{
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.scores #user-score::after{
+    content: ":";
+    margin-left: 14px;
 }
 
 /* OPTIONS SECTION STLYING */
 .options-container{
-    border: 1px solid black;
     margin: 12px auto;
     width: 70%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 32px;
+    gap: 40px;
+    padding: 12px 0;
+}
+
+.rock-section, 
+.paper-section, 
+.scissors-section, 
+.computer-option-section{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+/* THIS CODE WILL DISPLAY: FLEX WHEN WE GET THE COMPUTER CHOICE */
+.computer-option-section{
+    display: none;
+    margin-left: 24px;
+}
+
+.computer-option-section::before{
+    content: "VS";
+    position: absolute;
+    left: -48px;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.rock-section button,
+.paper-section button,
+.scissors-section button,
+.computer-option-section button{
+    width: fit-content;
+    padding: 8px;
+    border-radius: 50%;
+    border: 2px solid #999;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+/* BUTTON HOVER STYLES */
+.rock-section button:hover,
+.paper-section button:hover,
+.scissors-section button:hover,
+.computer-option-section button:hover
+{
+    background-color: #ebebeb;
+}
+
+/* BUTTON FOCUS STYLES */
+.rock-section button:focus,
+.paper-section button:focus,
+.scissors-section button:focus{
+    outline: 8px solid rgba(204, 202, 202, 0.5);
+}
+
+/* SVGS STYLES */
+.rock-section button img,
+.paper-section button img,
+.scissors-section button img,
+.computer-option-section button img
+{
+    width: 100px;
+}
+
+/* START GAME STYLING */
+
+/* THIS CODE WILL DISPLAY WHEN THE USER CLICKS ON ONE OF THE THREE OPTIONS*/
+#start-game-btn{
+    display: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    width: 150px;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 20px;
+    border: none;
+    background-color: #1e1e1e;
+    cursor: pointer;
+    color: #e4e4e4;
+    transition: background-color .4s ease-in;
+}
+
+#start-game-btn:hover{
+    background-color: #1e1e1eab;
 }
