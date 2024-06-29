@@ -18,6 +18,7 @@ main{
 /* SELECTION CODE */
 ::selection{
     background-color: yellow;
+    color: #1e1e1e;
 }
 
 /* MAIN HEADINGS AND PARAGRAPH STYLING */
