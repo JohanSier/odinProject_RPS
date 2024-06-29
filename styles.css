@@ -15,6 +15,11 @@ main{
     margin: auto;
 }
 
+/* SELECTION CODE */
+::selection{
+    background-color: yellow;
+}
+
 /* MAIN HEADINGS AND PARAGRAPH STYLING */
 
 .headings-and-paragraph{
@@ -141,6 +146,14 @@ main{
 .computer-option-section button img
 {
     width: 100px;
+}
+
+.rock-section button img::selection,
+.paper-section button img::selection,
+.scissors-section button img::selection,
+.computer-option-section button img::selection
+{
+    background-color: transparent;
 }
 
 /* START GAME STYLING */
