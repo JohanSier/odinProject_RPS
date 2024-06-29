@@ -1,90 +1,80 @@
+// GETTING DOM ELEMENTS
+const rockBtn = document.querySelector(".rock");
+const paperBtn = document.querySelector(".paper");
+const scissorsBtn = document.querySelector(".scissors");
+
+const computerDiv = document.querySelector(".computer-option-section");
+const computerDivImage = document.querySelector(".computer-selection-image");
+
+const scores = document.querySelector(".scores");
+const startBtn = document.querySelector(".start-game-btn");
+
 let humanScore = 0;
 let computerScore = 0;
-let userName = prompt("Enter your name! \n");
+let userChoice = "";
 
 function getComputerChoice() {
-    let computerChoice = Math.round(Math.random() * 2);
-    switch (computerChoice) {
-        case 0:
-            computerChoice = "Rock";
-            break;
-        case 1:
-            computerChoice = "Paper";
-            break;
-        case 2:
-            computerChoice = "Scissors";
-            break;
-        default:
-            console.log("The computer didn't choose, Try Again");
-            break;
-    }
-    return computerChoice;
+    const choices = ["Rock", "Paper", "Scissors"];
+    return choices[Math.floor(Math.random() * 3)];
 }
 
-function getHumanChoice() {
-    let humanChoice = prompt("Choose Rock, Paper or Scissors \n");
-    return humanChoice;
+function handleChoice(choice) {
+    userChoice = choice;
+    showStartBtn();
 }
 
-let humanSelection = getHumanChoice();
-let computerSelection = getComputerChoice();
+function showStartBtn() {
+    startBtn.classList.add("visible");
+}
 
+function hideStartBtn() {
+    startBtn.classList.remove("visible");
+}
 
 function playRound(humanChoice, computerChoice) {
-    
-  if(humanChoice.toLowerCase() != computerChoice.toLowerCase()){
-      /*---------------- WHEN THE HUMAN LOSES ----------------*/
-      if(humanChoice.toLowerCase() == "rock" && computerChoice.toLowerCase() == "paper"){
-      computerScore += 1
-      console.log(`${userName} you lose! Paper beats Rock`)
-      console.log(`COMPUTER CHOICE: ${computerChoice} \n Current Score: COMPUTER: ${computerScore} ${userName.toUpperCase()}: ${humanScore}`)
-      }
-      
-       else if(humanChoice.toLowerCase() == "scissors" && computerChoice.toLowerCase() == "rock"){
-          computerScore += 1
-          console.log(`${userName} you lose! Rock beats Scissors`)
-          console.log(`COMPUTER CHOICE: ${computerChoice} \n Current Score: Computer: ${computerScore} ${userName.toUpperCase()}: ${humanScore}`)
-      }
-      
-      else if(humanChoice.toLowerCase() == "paper" && computerChoice.toLowerCase() == "scissors"){
-          computerScore += 1
-          console.log(`COMPUTER CHOICE: ${computerChoice} \n ${userName} you lose! Scissors beats Paper`)
-          console.log(`Current Score: Computer: ${computerScore} ${userName.toUpperCase()}: ${humanScore}`)
-      }
-      
-            /*---------------- WHEN THE HUMAN WINS ----------------*/
-
-      
-      else if(humanChoice.toLowerCase() == "paper" && computerChoice.toLowerCase() == "rock"){
-          humanScore += 1
-          console.log(`COMPUTER CHOICE: ${computerChoice} \n ${userName} you win! Paper beats Rock`)
-          console.log(`Current Score: Computer: ${computerScore} ${userName.toUpperCase()}: ${humanScore}`)
-      }
-      
-      else if(humanChoice.toLowerCase() == "rock" && computerChoice.toLowerCase() == "scissors"){
-          humanScore += 1
-          console.log(`COMPUTER CHOICE: ${computerChoice} \n ${userName} you win! Rock beats Scissors`)
-          console.log(`Current Score: Computer: ${computerScore} ${userName.toUpperCase()}: ${humanScore}`)
-      }
-      
-      else if(humanChoice.toLowerCase() == "scissors" && computerChoice.toLowerCase() == "paper"){
-          humanScore += 1
-          console.log(`COMPUTER CHOICE: ${computerChoice} \n ${userName} you win! Scissors beats Paper`)
-          console.log(`Current Score: Computer: ${computerScore} ${userName.toUpperCase()}: ${humanScore}`)
-      }
-  }
-  else {
-      console.log(`COMPUTER CHOICE: ${computerChoice} \n${userName} it's a Tie!`)
-      console.log(`Current Score: \n Computer: ${computerScore} \n ${userName.toUpperCase()}: ${humanScore}`)
-  }
-}
-
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-        playRound(humanSelection, computerSelection);
-        humanSelection = getHumanChoice();
-        computerSelection = getComputerChoice();
+    if (humanChoice.toLowerCase() !== computerChoice.toLowerCase()) {
+        if (
+            (humanChoice.toLowerCase() === "rock" && computerChoice.toLowerCase() === "paper") ||
+            (humanChoice.toLowerCase() === "scissors" && computerChoice.toLowerCase() === "rock") ||
+            (humanChoice.toLowerCase() === "paper" && computerChoice.toLowerCase() === "scissors")
+        ) {
+            computerScore++;
+            console.log(`${userName} you lose! ${computerChoice} beats ${humanChoice}`);
+        } else {
+            humanScore++;
+            console.log(`${userName} you win! ${humanChoice} beats ${computerChoice}`);
+        }
+    } else {
+        console.log(`It's a tie! Both chose ${humanChoice}`);
     }
+    console.log(`Current Score: Computer: ${computerScore}, ${userName}: ${humanScore}`);
 }
 
-playGame();
+// function updateScore() {
+//     scores.innerHTML = `
+//         <p id="user-score">${humanScore}</p>
+//         <p id="computer-score">${computerScore}</p>
+//     `;
+// }
+
+function startGame() {
+    let computerChoice = getComputerChoice();
+    playRound(userChoice, computerChoice);
+    // updateScore();
+    hideStartBtn();
+}
+
+// User choices event listeners
+rockBtn.addEventListener("click", () => handleChoice("Rock"));
+paperBtn.addEventListener("click", () => handleChoice("Paper"));
+scissorsBtn.addEventListener("click", () => handleChoice("Scissors"));
+
+// START GAME
+startBtn.addEventListener("click", startGame);
+
+// HIDE startBtn when the user clicks outside one of the three buttons
+document.body.addEventListener("click", (event) => {
+    if (!rockBtn.contains(event.target) && !paperBtn.contains(event.target) && !scissorsBtn.contains(event.target)) {
+        hideStartBtn();
+    }
+});

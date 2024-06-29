@@ -146,8 +146,8 @@ main{
 /* START GAME STYLING */
 
 /* THIS CODE WILL DISPLAY WHEN THE USER CLICKS ON ONE OF THE THREE OPTIONS*/
-#start-game-btn{
-    display: none;
+.start-game-btn{
+    visibility: hidden;
     font-size: 1.1rem;
     font-weight: 600;
     width: 150px;
@@ -161,6 +161,10 @@ main{
     transition: background-color .4s ease-in;
 }
 
-#start-game-btn:hover{
+.visible{
+    visibility: visible;
+}
+
+.start-game-btn:hover{
     background-color: #1e1e1eab;
 }
