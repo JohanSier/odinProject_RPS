@@ -3,6 +3,11 @@ const rockBtn = document.querySelector(".rock");
 const paperBtn = document.querySelector(".paper");
 const scissorsBtn = document.querySelector(".scissors");
 
+// LIVE SCORE ELEMENTS
+const liveScoreContainer = document.querySelector(".live-score-container");
+const liveUserScore = document.querySelector(".live-user-score");
+const liveComputerScore = document.querySelector(".live-computer-score");
+
 // SELECTING THEIR CONTAINERS
 const rockContainer = document.querySelector(".rock-section");
 const paperContainer = document.querySelector(".paper-section");
@@ -60,6 +65,13 @@ function handleChoice(choice) {
 }
 
 function updateScore(){
+    //Updating live score
+    setTimeout(() => {
+        liveUserScore.textContent = `You: ${humanScore}`;
+        liveComputerScore.textContent = `Computer: ${computerScore}`;
+    }, timeOut)
+    
+    //Updating non live score
     $userScore.textContent = humanScore;
     $computerScore.textContent = computerScore;
 }
@@ -79,6 +91,10 @@ function restartGame() {
 
 function showStartBtn() {
     startBtn.classList.add("visible");
+}
+
+function showLiveScores(){
+    liveScoreContainer.style.display = "flex"
 }
 
 function hideStartBtn() {
@@ -150,6 +166,7 @@ function startGame() {
     showComputerOption();
     updateScore();
     showRestartBtn();
+    showLiveScores();
 }
 
 // User choices event listeners
