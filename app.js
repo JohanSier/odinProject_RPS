@@ -3,6 +3,10 @@ const rockBtn = document.querySelector(".rock");
 const paperBtn = document.querySelector(".paper");
 const scissorsBtn = document.querySelector(".scissors");
 
+// RESULT TEXT ELEMENTS
+const resultTextContainer = document.querySelector(".result-text-container");
+const resultText = document.querySelector(".result");
+
 // LIVE SCORE ELEMENTS
 const liveScoreContainer = document.querySelector(".live-score-container");
 const liveUserScore = document.querySelector(".live-user-score");
@@ -19,14 +23,17 @@ const restartContainer = document.querySelector(".restart-container");
 // DELAY VARIABLE
 const timeOut = 3500;
 
+// COMPUTER OPTIONS
 const computerDiv = document.querySelector(".computer-option-section");
 const computerDivImage = document.querySelector(".computer-selection-image");
 const computerDivText = document.querySelector(".computer-selection-text");
 
+// SCORES
 const scores = document.querySelector(".scores");
 const $userScore = document.querySelector("#user-score");
 const $computerScore = document.querySelector("#computer-score");
 
+// BUTTONS
 const startBtn = document.querySelector(".start-game-btn");
 const restartBtn = document.querySelector(".restart-btn");
 
@@ -49,11 +56,16 @@ function playRound(humanChoice, computerChoice) {
             (humanChoice.toLowerCase() === "paper" && computerChoice.toLowerCase() === "scissors")
         ) {
             computerScore++;
+            resultText.textContent = "You Lose, Computer Wins"
+            resultText.style.color = "rgb(180, 14, 31)"
         } else {
             humanScore++;
+            resultText.textContent = "You Win"
+            resultText.style.color = "rgb(14, 180, 14)"
         }
     } else {
-        console.log(`It's a tie! Both chose ${humanChoice}`);
+        resultText.textContent = "It's a tie";
+        resultText.style.color = "rgb(34, 70, 159)";
     }
 }
 
@@ -69,11 +81,17 @@ function updateScore(){
     setTimeout(() => {
         liveUserScore.textContent = `You: ${humanScore}`;
         liveComputerScore.textContent = `Computer: ${computerScore}`;
-    }, timeOut)
+    }, 4000)
     
     //Updating non live score
     $userScore.textContent = humanScore;
     $computerScore.textContent = computerScore;
+}
+
+function showResultText(){
+    setTimeout(() => {
+        resultTextContainer.classList.toggle("visible");
+    }, timeOut)
 }
 
 function showRestartBtn(){
@@ -147,6 +165,7 @@ function resetGame() {
     computerDiv.style.display = "none";
     scores.classList.remove("visibleScore");
     restartBtn.classList.remove("visible");
+    resultTextContainer.classList.remove("visible");
     restartFlexContainer.style.display = "none";
     restartContainer.style.display = "none";
     updateScore();
@@ -167,6 +186,7 @@ function startGame() {
     updateScore();
     showRestartBtn();
     showLiveScores();
+    showResultText();
 }
 
 // User choices event listeners
