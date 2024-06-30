@@ -21,11 +21,68 @@ main{
     color: #1e1e1e;
 }
 
+
+/* LIVE SCORE STYLING */
+.live-score-container{
+    display: none;
+    position: absolute;
+    top: 35px;
+    right: 55px;
+    flex-direction: column;
+    justify-content: start;
+    padding: 14px 20px;
+    background: #c7c6c640;
+    border-radius: 10px;
+    gap: 4px;
+}
+
+.live-score-container p {
+    position: relative;
+    padding-left: 20px; /* Adjust as needed to make space for the dot */
+}
+
+.live-score-container p::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: #ff0000; /* Red dot */
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 1);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 0, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+    }
+}
+
+.live-score{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 2px;
+}
+
+.live-user-score{
+    display: block;
+}
 /* MAIN HEADINGS AND PARAGRAPH STYLING */
 
 .headings-and-paragraph{
     display: flex;
-    margin-top: 4.5rem;
+    margin-top: 6rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -50,9 +107,8 @@ main{
 
 /* SCORES SECTION STYLING */
 /* THIS CODE WILL DISPLAY WHEN THE USER CLICKS ON START GAME BUTTON */
-.scores{
+.scores {
     display: none; /* when visible change it to flex */
-    transform: translateY(-100px);
     opacity: 0;
     transition: opacity 1s ease-in, transform 1s ease;
     margin: auto;
@@ -60,15 +116,13 @@ main{
     align-items: center;
     justify-content: center;
     gap: 12px;
-    margin-top: 24px;
     padding: 12px 24px;
     border: 2px solid #1e1e1e;
     border-radius: 20px;
 }
 
 .visibleScore{
-    display: flex;
-    transform: translateY(0);
+    display: inline-flex;
     opacity: 1;
     transition: opacity .3s ease-in, transform .3s ease;
 }
@@ -167,6 +221,48 @@ main{
     background-color: transparent;
 }
 
+/* RESULT TEXT STYLING */
+.result-text-container{
+    visibility: hidden;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: -14px;
+    margin-bottom: 24px;
+    /* color: rgb(14, 180, 14); WHEN THE USER WINS*/
+    /* color: rgb(180, 14, 31); WHEN THE COMPUTER WINS */
+    /* color: rgb(34, 70, 159); WHEN IT'S A TIE*/
+}
+
+/* FLEX CONTAINER STYLING CONTAINING SCORES AND RESTART BUTTON */
+.flex-container{
+    display: none; /* when visible change it to flex */
+    margin: auto;
+    width: fit-content; 
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+/* RESTART GAME STYLING */
+.restart-container{
+    display: none;
+}
+
+.restart-btn{
+    visibility: hidden;
+    width: 45px;
+    height: auto;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.restart-btn img{
+    width: 45px;
+}
+
 /* START GAME STYLING */
 
 /* THIS CODE WILL DISPLAY WHEN THE USER CLICKS ON ONE OF THE THREE OPTIONS*/
@@ -176,12 +272,12 @@ main{
     font-weight: 600;
     width: 150px;
     padding: 12px;
-    margin-top: 8px;
+    margin-top: 2px;
     border-radius: 20px;
     border: none;
     background-color: #1e1e1e;
     cursor: pointer;
-    color: #e4e4e4;
+    color: #fff;
     transition: background-color .4s ease-in;
 }
 
@@ -191,4 +287,41 @@ main{
 
 .start-game-btn:hover{
     background-color: #1e1e1eab;
+}
+
+/* POP UP STYLING */
+.result-pop-up{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    inset: 0;
+    background: #1e1e1ee6;
+    z-index: 999;
+    color: #fff;
+    gap: 14px;
+}
+
+.buttons-group{
+    display: flex;
+    gap: 14px;
+}
+
+#exit-btn{
+    background: #f43e3e;
+    color: #fff;
+}
+
+.result-pop-up button{
+    padding: 10px 24px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    background: #fff;
+    border: none;
+    border-radius: 50px;
+}
+
+.result-pop-up h3{
+    font-size: 2.5rem;
 }

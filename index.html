@@ -12,13 +12,32 @@
 </head>
 <body>
     <main>
+        <!-- THIS CODE WILL DISPLAY A POP UP WINDOW WHEN THE USER WINS OR LOOSE -->
+        <section class="result-pop-up">
+            <h3>Congrats! You've Won!</h3>
+            <div class="buttons-group">
+                <button id="play-again-btn">Play Again</button>
+                <button id="exit-btn">Exit</button>
+            </div>
+        </section>
+
+        <!-- ONLY VISIBLE IF THE USER HAS CLICKED AT LEAST ONE TIME THE START GAME BTN -->
+        <aside class="live-score-container">
+            <p>Live Score</p>
+            
+            <div class="live-score">
+                <small class="live-user-score">You: 0</small>
+                <small class="live-computer-score">Computer: 0</small>
+            </div>
+        </aside>
+        <!-- ---------------------------------------------------------------------------->
+
         <div class="headings-and-paragraph">
             <h1>Rock, Paper, Scissors</h1>
-            <p>Play the classic game of Rock, Paper, Scissors against the computer! Test your strategy and luck in this fun and interactive game. Choose your weapon wisely and see if you can outsmart the Computer.</p>
+            <p>Play the classic game of Rock, Paper, Scissors against the computer! Test your strategy and luck in this fun and interactive game. The first who reaches 3 points wins!</p>
             <h2>Choose Rock, Paper or Scissors</h2>
         </div>
         
-        <!-- This div only will display when double clicking one of the three options -->
         <section class="options-container">
             <div class="rock-section">
                 <button class="rock">
@@ -50,11 +69,24 @@
             </div>
         </section>
 
-        <div class="scores">
-            <p id="user-score">0</p>
-            <p id="computer-score">0</p>
+        <div class="result-text-container">
+            <p class="result">You Win</p>
+        </div>
+
+        <div class="flex-container">
+            <div class="scores">
+                <p id="user-score">0</p>
+                <p id="computer-score">0</p>
+            </div>
+        
+            <div class="restart-container">
+                <button class="restart-btn">
+                    <img src="./Images/restart.svg" alt="Restart">
+                </button>
+            </div>    
         </div>
         
+        <!-- This div only will display when one of the three options gets clicked-->
         <button class="start-game-btn">Play!</button>
     </main>
 <script src="./app.js"></script>
