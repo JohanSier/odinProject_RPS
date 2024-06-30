@@ -3,6 +3,13 @@ const rockBtn = document.querySelector(".rock");
 const paperBtn = document.querySelector(".paper");
 const scissorsBtn = document.querySelector(".scissors");
 
+// POP UP ELEMENTS
+const resultPopUp = document.querySelector(".result-pop-up");
+const resultPopUpText = document.querySelector(".result-pop-up h3");
+//POP UP BUTTONS
+const exitBtn = document.getElementById("exit-btn");
+const playAgainBtn = document.getElementById("play-again-btn");
+
 // RESULT TEXT ELEMENTS
 const resultTextContainer = document.querySelector(".result-text-container");
 const resultText = document.querySelector(".result");
@@ -74,6 +81,41 @@ function handleChoice(choice) {
     if (!restartBtn.classList.contains("visible")){
         showStartBtn();
     }
+}
+
+function showResultPopUp() {
+    if (humanScore === 3) {
+        setTimeout(() =>{
+            resultPopUp.style.display = "flex";
+            resultPopUpText.textContent = "Congrats! You've Won!";
+        }, timeOut + 2000)
+    } else if (computerScore === 3) {
+        setTimeout(() =>{
+            resultPopUp.style.display = "flex";
+            resultPopUpText.textContent = "Better Luck Next Time! You've Lost!";
+        }, timeOut)
+    }
+}
+
+exitBtn.addEventListener("click", () => {
+    resultPopUp.style.display = "none";
+    resetGame();
+    resetScores();
+});
+
+playAgainBtn.addEventListener("click", () => {
+    resultPopUp.style.display = "none";
+    resetGame();
+    resetScores();
+});
+
+function resetScores() {
+    humanScore = 0;
+    computerScore = 0;
+    liveUserScore.textContent = `You: ${humanScore}`;
+    liveComputerScore.textContent = `Computer: ${computerScore}`;
+    $userScore.textContent = humanScore;
+    $computerScore.textContent = computerScore;
 }
 
 function updateScore(){
@@ -184,9 +226,12 @@ function startGame() {
     removeUnselectedOptions();
     showComputerOption();
     updateScore();
+
     showRestartBtn();
     showLiveScores();
     showResultText();
+
+    showResultPopUp();
 }
 
 // User choices event listeners
