@@ -221,6 +221,19 @@ main{
     background-color: transparent;
 }
 
+/* RESULT TEXT STYLING */
+.result-text-container{
+    visibility: hidden;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: -14px;
+    margin-bottom: 24px;
+    /* color: rgb(14, 180, 14); WHEN THE USER WINS*/
+    /* color: rgb(180, 14, 31); WHEN THE COMPUTER WINS */
+    /* color: rgb(34, 70, 159); WHEN IT'S A TIE*/
+}
+
 /* FLEX CONTAINER STYLING CONTAINING SCORES AND RESTART BUTTON */
 .flex-container{
     display: none; /* when visible change it to flex */
