@@ -88,12 +88,12 @@ function showResultPopUp() {
         setTimeout(() =>{
             resultPopUp.style.display = "flex";
             resultPopUpText.textContent = "Congrats! You've Won!";
-        }, timeOut + 2000)
+        }, timeOut + 1500)
     } else if (computerScore === 3) {
         setTimeout(() =>{
             resultPopUp.style.display = "flex";
             resultPopUpText.textContent = "Better Luck Next Time! You've Lost!";
-        }, timeOut)
+        }, timeOut + 1500)
     }
 }
 
