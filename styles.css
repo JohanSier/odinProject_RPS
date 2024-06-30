@@ -82,7 +82,7 @@ main{
 
 .headings-and-paragraph{
     display: flex;
-    margin-top: 4.5rem;
+    margin-top: 6rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -277,7 +277,7 @@ main{
     border: none;
     background-color: #1e1e1e;
     cursor: pointer;
-    color: #e4e4e4;
+    color: #fff;
     transition: background-color .4s ease-in;
 }
 
@@ -287,4 +287,41 @@ main{
 
 .start-game-btn:hover{
     background-color: #1e1e1eab;
+}
+
+/* POP UP STYLING */
+.result-pop-up{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    inset: 0;
+    background: #1e1e1ee6;
+    z-index: 999;
+    color: #fff;
+    gap: 14px;
+}
+
+.buttons-group{
+    display: flex;
+    gap: 14px;
+}
+
+#exit-btn{
+    background: #f43e3e;
+    color: #fff;
+}
+
+.result-pop-up button{
+    padding: 10px 24px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    background: #fff;
+    border: none;
+    border-radius: 50px;
+}
+
+.result-pop-up h3{
+    font-size: 2.5rem;
 }
